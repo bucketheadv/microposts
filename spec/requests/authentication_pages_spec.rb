@@ -64,6 +64,16 @@ describe "AuthenticationPages" do
 					it { should have_selector('title',text: '登录')}
 				end
 			end
+			describe "在Microposts Controller中" do
+				describe "提交到create action" do
+					before { post microposts_path}
+					specify { response.should redirect_to(signin_path)}
+				end
+				describe "提交到destroy action中" do
+					before { delete micropost_path(FactoryGirl.create(:micropost))}
+					specify{ response.should redirect_to(signin_path)}
+				end
+			end
 		end
 		describe "作为错误用户" do
 			let(:user) {FactoryGirl.create(:user)}

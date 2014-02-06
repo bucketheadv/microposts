@@ -18,6 +18,20 @@ describe "StaticPages" do
 			page.should have_selector('h1',
 									 text: "我的微博")
 		end
+		describe "已登录用户" do
+			let(:user) {FactoryGirl.create(:user)}
+			before do
+				FactoryGirl.create(:micropost,user: user,content: "Lorem ipsum")
+				FactoryGirl.create(:micropost,user: user,content: "Dolor sit amet")
+				sign_in user
+				visit root_path
+			end
+			it "应该渲染用户的feed" do
+				user.feed.each do |item|
+					page.should have_selector("li##{item.id}",text: item.content)
+				end
+			end
+		end
 	end
 	describe "帮助页面" do
 		before { visit help_path }

@@ -1,10 +1,10 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
 	<div id="error_explanation">
 		<div class="alert alert-error">
-			表单包含<%= @user.errors.count %>项错误.
+			表单包含<%= object.errors.count %>项错误.
 		</div>
 		<ul>
-			<%= @user.errors.full_messages.each do |msg| %>
+			<%= object.errors.full_messages.each do |msg| %>
 				<li>* <%= msg %></li>
 			<% end %>
 		</ul>

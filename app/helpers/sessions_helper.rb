@@ -1,3 +1,4 @@
+# encoding:utf-8
 module SessionsHelper
 	def sign_in_permanent(user)
 		cookies.permanent[:remember_token] = user.remember_token
@@ -36,5 +37,12 @@ module SessionsHelper
 	end
 	def store_location
 		session[:return_to] = request.fullpath
+	end
+
+	def signed_in_user
+		unless signed_in?
+			store_location
+			redirect_to signin_url,notice: "请登录"
+		end
 	end
 end
