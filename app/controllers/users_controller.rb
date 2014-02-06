@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
 	  @user = User.new(params[:user])
 	  if @user.save
+		  sign_in @user
 		  flash[:success] = "欢迎来到'我的微博'!"
 		  redirect_to @user
 	  else
