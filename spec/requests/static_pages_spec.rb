@@ -2,15 +2,17 @@
 require 'spec_helper'
 
 describe "StaticPages" do
-	describe "主页" do
-		before { visit '/static_pages/home' }
+
+	subject { page }
+	describe "首页" do
+		before { visit root_path }
 		it "不应该有自定义标题" do
 			page.should_not have_selector('title',
-									 text: "| 主页")
+									 text: "| 首页")
 		end
 		it "应该有基础标题" do
 			page.should have_selector('title',
-									 text: "基于Ruby on Rails的微博")
+									 text: full_title(''))
 		end
 		it "应该有h1 '微博'" do
 			page.should have_selector('h1',
@@ -18,25 +20,36 @@ describe "StaticPages" do
 		end
 	end
 	describe "帮助页面" do
-		before { visit '/static_pages/help' }
+		before { visit help_path }
 		it "应该有h1 '帮助'"  do
 			page.should have_selector('h1',
 									text: "帮助")
 		end
-		it "应该有标题 '关于我们'" do
+		it "应该有标题 '帮助'" do
 			page.should have_selector('title',
-									title: "基于Ruby on Rails的微博 | 帮助")
+									title: full_title('帮助'))
 		end
 	end
 	describe "'关于我们'页面" do
-		before { visit '/static_pages/about' }
+		before { visit about_path }
 		it "应该有h1 '关于我们'" do
 			page.should have_selector('h1',
 									text: "关于我们")
 		end
 		it "应该有标题 '关于我们'" do
 			page.should have_selector('title',
-									text: "基于Ruby on Rails的微博 | 关于我们")
+									text: full_title('关于我们'))
+		end
+	end
+	describe "'联系我们'页面" do
+		before { visit contact_path}
+		it "应该有h1 '联系我们'" do
+			page.should have_selector('h1',
+									 text: "联系我们")
+		end
+		it "应该有标题 '联系我们'" do
+			page.should have_selector('title',
+									 text: full_title('联系我们'))
 		end
 	end
 end
