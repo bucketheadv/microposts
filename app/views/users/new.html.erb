@@ -1,0 +1,20 @@
+<% provide(:title,"注册用户")%>
+<h1>注册帐户</h1>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :name,"用户名" %>
+			<%= f.text_field :name,placeholder: "个人昵称,不能为空" %>
+			<%= f.label :email,"邮箱" %>
+			<%= f.text_field :email,placeholder: "作为登录帐号，不能为空" %>
+			<%= f.label :password,"密码" %>
+			<%= f.password_field :password,placeholder: "登录密码，不少于6位" %>
+			<%= f.label :password_confirmation,"确认密码" %>
+			<%= f.password_field :password_confirmation,placeholder: "用于确认您要设置的密码" %>
+
+			<%= f.submit "生成我的帐户",class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
