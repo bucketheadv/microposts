@@ -1,0 +1,14 @@
+
+<%= render 'shared/error_messages',object: f.object %>
+
+<%= f.label :name,"用户名" %>
+<%= f.text_field :name %><%= error_div(@user,:name,"用户名") %>
+
+<%= f.label :email,"邮箱" %>
+<%= f.text_field :email %><%= error_div(@user,:email,"邮箱") %>
+
+<%= f.label :password,"密码" %>
+<%= f.password_field :password %><%= error_div(@user,:password,"密码") %>
+
+<%= f.label :password_confirmation,"确认密码" %>
+<%= f.password_field :password_confirmation %><%= error_div(@user,:password_confirmation,"确认密码") %>

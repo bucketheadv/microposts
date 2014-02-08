@@ -3,19 +3,7 @@
 <div class="row">
 	<div class="span6 offset3">
 		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages',object: f.object %>
-
-			<%= f.label :name,"用户名" %>
-			<%= f.text_field :name,placeholder: "个人昵称,不能为空" %><%= error_div(@user,:name,"用户名")%>
-			<%= f.label :email,"邮箱" %>
-			<%= f.text_field :email,placeholder: "作为登录帐号，不能为空" %>
-			<%= error_div(@user,:email,"邮箱")%>
-			<%= f.label :password,"密码" %>
-			<%= f.password_field :password,placeholder: "登录密码，不少于6位" %>
-			<%= error_div(@user,:password,"密码")%>
-			<%= f.label :password_confirmation,"确认密码" %>
-			<%= f.password_field :password_confirmation,placeholder: "用于确认您要设置的密码" %>
-			<%= error_div(@user,:password_confirmation,"确认密码")%>
+			<%= render 'user_form',f: f%>
 
 			<%= f.submit "生成我的帐户",class: "btn btn-large btn-primary" %>
 		<% end %>
