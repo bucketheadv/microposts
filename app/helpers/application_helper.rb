@@ -15,9 +15,9 @@ module ApplicationHelper
 		errors = model.errors[field]
 		return unless errors
 		%Q(
-			<div class="errors">
-			#{errors.is_a?(Array) ? errors.map{ |e| field_name + e}.join(",") : field_name << errors}
+			<div class="errors"><font style="color: green">
+			#{errors.is_a?(Array) ? errors.map{ |e| field_name + e}.join(",") : field_name << errors} </font>
 			</div>
-		)
+		).html_safe
 	end
 end

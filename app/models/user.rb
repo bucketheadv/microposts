@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: users
@@ -21,10 +22,10 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :name,presence: true,length: {maximum: 50}
-  validates :email,presence: true,format: { with: VALID_EMAIL_REGEX},uniqueness: { case_sensitive: false}
-  validates :password,presence: true,length: { minimum: 6}
-  validates :password_confirmation,presence: true
+  validates :name,presence: { message: "不能为空"},length: {maximum: 50,message: "太长（最大长度为50）"}
+  validates :email,presence: { message: "不能为空"},format: { with: VALID_EMAIL_REGEX,message: "格式不正确"},uniqueness: { case_sensitive: false,message: "已经被使用"}
+  validates :password,presence: { message: "不能为空"},length: { minimum: 6,message: "最小长度为6"}
+  validates :password_confirmation,presence: { message: "不能为空"}
 
   def feed
 	  #Micropost.where("user_id = ?",id)
