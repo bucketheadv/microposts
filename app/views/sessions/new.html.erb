@@ -10,6 +10,9 @@
 			<%= f.label :password,"密码" %>
 			<%= f.password_field :password %>
 
+			<%= f.check_box :remember_token %>
+			<%= f.label :remember_token,"记住我" %>
+
 			<%= f.submit "登录",class: "btn btn-large btn-primary" %>
 		<% end %>
 		<p>新用户?<%= link_to "现在注册!",signup_path %></p>
