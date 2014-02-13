@@ -1,5 +1,11 @@
 <% provide(:title,"所有用户") %>
 <h1>所有用户</h1>
+<%= form_tag users_path,:method => 'get' do %>
+	<p>
+	<%= text_field_tag :search,params[:search],style: "width:50%;margin-left:20%" %>
+	<%= submit_tag "搜索",:name => nil,class: "btn btn-large" %>
+	</p>
+<% end %>
 <%= will_paginate %>
 <ul class="users">
 	<%= render @users %>

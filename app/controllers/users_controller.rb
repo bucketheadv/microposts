@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 	  @user = User.new
   end
   def index
-	  @users = User.paginate(page: params[:page])
+	  @users = User.paginate(page: params[:page]).search(params[:search])
+	  #@users = User.paginate(page: params[:page])
   end
 
   def following

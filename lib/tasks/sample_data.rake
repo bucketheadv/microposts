@@ -3,11 +3,23 @@ namespace :db do
 	desc "使用样例数据填充数据库"
 	task populate: :environment do
 		make_users
+		make_same_name_users
 		make_microposts
 		make_relationships
 	end
 end
 
+def make_same_name_users
+	99.times do |n|
+		name = "Example User#{n}"
+		email = "example_user_#{n}@railstutorial.org"
+		password = "password"
+		User.create!(name: name,
+					email: email,
+					password: password,
+					password_confirmation: password)
+	end
+end
 def make_users
 	admin = User.create!(name: "Example User",
 						 email: "example@railstutorial.org",
