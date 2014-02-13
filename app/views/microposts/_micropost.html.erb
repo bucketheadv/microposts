@@ -1,9 +1,14 @@
 <li>
-<span class="content"><%= wrap(micropost.content) %></span>
+<span class="content"><%= sanitize(micropost.content) %></span>
 <span  class="timestamp">
 	Posted <%= time_ago_in_words(micropost.created_at) %>ago.
 </span>
 <% if current_user?(micropost.user) %>
 	<%= link_to "删除",micropost,method: :delete,data: {confirm: "你确定？"},title: micropost.content %>
+<% end %>
+<%= form_for :reply do |f| %>
+	<%= f.text_area :content,class: "ckeditor" %>
+
+	<%= f.submit "回复",class: "btn btn-large btn-primary" %>
 <% end %>
 </li>

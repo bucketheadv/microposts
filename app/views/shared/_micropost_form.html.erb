@@ -2,7 +2,7 @@
 	<%= render 'shared/error_messages',object: f.object %>
 	<div class="field" >
 		<%= error_div(@micropost,:content,"微博内容")%>
-		<%= f.text_area :content,placeholder: "撰写新微博..." %>
+		<%= f.text_area :content,placeholder: "撰写新微博...",class: "ckeditor" %>
 	</div>
 	<%= f.submit "发布",class: "btn btn-large btn-primary" %>
 <% end %>

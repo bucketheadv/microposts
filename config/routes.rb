@@ -1,4 +1,6 @@
 Microposts::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   #get "user/new"
 
 #  get "static_pages/home"

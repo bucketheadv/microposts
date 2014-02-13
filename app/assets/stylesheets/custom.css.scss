@@ -199,6 +199,9 @@ input,textarea,select,.uneditable-input{
 }
 .content{
 	display: block;
+	white-space: normal;
+	word-break: break-all;
+	overflow: hidden;
 }
 .timestamp{
 	color: $grayLight;
